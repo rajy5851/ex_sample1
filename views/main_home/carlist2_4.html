@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content>
+        <meta name="author" content>
+        <link rel="icon" href="../../favicon.ico">
+        <title>Navbar car search platform for Bootstrap</title>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap core CSS -->
+<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="navbar.css" rel="stylesheet">
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!-- [if it IE 9]<script src="../../assets/js/ie8-responsive-file-warning.js"></script>-->
+<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- [if it IE 9] -->
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script>
+            function searchByCarNum() {
+                let searchText = $('#searchtext1').val();
+                let $target = $('#list');
+                // searchtext2
+                // $에서 못찾는 것이면 include가 안되어 있는 것이다.
+                // include를 해주어야 한다.
+                // $는 jQuery 변수 의미이다.
+                // 검색 데이터 $ <%= %>를 가져온다.
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/filter',
+                    dataType: 'json',
+                    data: {
+                        "searchText": searchText
+                    },
+                    success: function (list) {
+                    // success는 function에서 item을 가지고 온다.
+                        console.log('success');
+                        console.log(list);
+                        // type은 포스트 타입
+                        // 리스트에서 데이터 가져옴.
+
+                        //target update
+                        // $(target).empty();
+                        $target.empty();
+                        console.log('list');
+                        console.log(list);
+                        $.each(list, function(i, item) {
+                            $target.append(`
+                            <tr>
+                                <td>${i+1}</td>
+                        ​        <td>${item.carNumber}</td>
+                        ​        <td>${item.owner}</td>
+                        ​        <td>${item.model}</td>
+                                <td>${item.company}</td>
+                                <td>${item.numOfAccident}</td>
+                                <td>${item.numOfOwnerChange}</td>
+                        ​    </tr>
+                            `);
+                        });
+
+
+                    }
+                });
+            }
+
+
+            function searchByCompany() {
+                let searchText = $('#searchtext2').val();
+                let $target = $('#list');
+                // searchtext2
+                // $에서 못찾는 것이면 include가 안되어 있는 것이다.
+                // include를 해주어야 한다.
+                // $는 jQuery 변수 의미이다.
+                // 검색 데이터 $ <%= %>를 가져온다.
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/filter',
+                    dataType: 'json',
+                    data: {
+                        "searchText": searchText
+                    },
+                    success: function (list) {
+                    // success는 function에서 item을 가지고 온다.
+                        console.log('success');
+                        console.log(list);
+
+                        // type은 포스트 타입
+                        // 리스트에서 데이터 가져옴.
+
+                        //target update
+                        // $(target).empty();
+                        $target.empty();
+                        $.each(list, function(i, item) {
+                            $target.append(`
+                            <tr>
+                                <td>${i+1}</td>
+                        ​        <td>${item.carNumber}</td>
+                        ​        <td>${item.owner}</td>
+                        ​        <td>${item.model}</td>
+                                <td>${item.company}</td>
+                                <td>${item.numOfAccident}</td>
+                                <td>${item.numOfOwnerChange}</td>
+                        ​    </tr>
+                            `);
+                        });
+
+
+                    }
+                });
+            }
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+
+    <a href='/'>메인 홈페이지</a>
+    
+    <br>
+<div class="container">
+    <div class="jumbotron">
+    <div class="row">
+        <div class="col-ms-12">
+           <p> 회원정보 : <%=user.userid %> 님 반갑습니다. 즐거운 하루 보내세요. </p>
+           <p> 아이디 : <%= user.userid %> 로그인을 했습니다. </p>
+           <p> 이름 : <%= user.name %> 님 안녕하세요.  </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3
+px-md-4 mb-3 bg-dark border-bottom shadow-sm sticky-top">
+<a class="navbar-brand my-0 mr-md-auto font-weight-normal text-white"
+href="/">Carhistory</a>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-white" href="#">About</a>
+        <a class="p-2 text-white" href="#">Search</a>
+        <a class="p-2 text-white" href="#">CarList</a>
+        <a class="p-2 text-white" href="#">테스트 코드</a>
+    </nav>
+    <% if (user) {%>
+        <a class="btn btn-outline-warning" href="/logout">로그아웃</a>
+    <% } else { %>
+        <a class="btn btn-outline-primary" href="/login_form">로그인</a>
+    <% } %>
+</div>
+
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" 
+                data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">....</button>
+                <a class="naver-brand" href="#">Carlist</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="ture"
+            style="height: 1px;">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        role="button" aria-expanded="false">
+                        "Dropdown"
+                        <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#">Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another action</a>
+                            </li>
+                            <li>
+                                <a href="#">Something else here</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li>
+                                <a href="#">Separated link</a>
+                            </li>
+                            <li>
+                                <a href="#">One more separated link</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="./">
+                            "Default "
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../navbar-static-top/">Static top</a>
+                    </li>
+                    <li>
+                        <a href="../navbar-fixed-top/">Fixed top</a> 
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>차량조회 서비스에 오신 것을 환영</h1>
+        <P>
+            "반갑습니다. 찾고 싶으신 차량을 조회하세요."
+        </P>
+        <p>
+            <a class="btn btn-lg btn-primary" href="../../"
+            role="button">View navbar docs --</a>
+        </p>
+    </div>
+</div>
+<!-- /container -->
+<!-- Bootstrap core JavaScript -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<!-- 검색 영역 -->
+<div class="jumbotron">
+    <h1>Car List</h1>
+    <form name="regform" class="form-inline">
+        <input type="text" class="form-control" name="carNumber" value="" placeholder="차량번호">
+        <input type="text" class="form-control" name="owner" value="" placeholder="소유자">
+        <input type="text" class="form-control" name="model" value="" placeholder="모델">
+        <input type="text" class="form-control" name="company" value="" placeholder="제조사">
+        <input type="number" class="form-control" name="numOfAccident" vlaue="" placeholder="사고횟수">
+        <input type="number" class="form-control" name="numOfOwnerChange" value="" placeholder="소유자 변경횟수">
+        <input type="button" id="submit" class="btn btn-primary" value="제출">
+
+        <!-- <input type="button" id="cancel" class="btn btn-secondary" value="취소"> -->
+    </form>
+    <div>
+        <input type="text" id="searchtext1" placeholder="차량번호" value="">
+        <button class="btn btn-primary" id="btn_search1" onclick="searchByCarNum();">검색</button>
+    </div>
+    <div>
+        <input type="text" id="searchtext2" placeholder="제조사" value="">
+        <button class="btn btn-primary" id="btn_search2" onclick="searchByCompany();">검색</button>
+    </div>
+</div><!--// 검색 영역 -->
+
+<table class="table table-striped" id="cartable">
+    <thead>
+        <tr>
+        <th class="th-sm">No</th>
+        <th>CarNumber</th>
+        <th>Owner</th>
+        <th>model</th>
+        <th>Company</th>
+        <th>NumOfAccient</th>
+        <th>NumOfOwnerChange</th>
+        </tr>
+    </thead>
+    <tbody id="list">
+    
+    <% for(let i=0; i<list.length; i++) { %>
+    <tr>
+​        <td><%= i %></td>
+​        <td><%= list[i].carNumber %></td>
+​        <td><%= list[i].owner %></td>
+​        <td><%= list[i].model %></td>
+        <td><%= list[i].company %></td>
+        <td><%= list[i].numOfAccident %></td>
+        <td><%= list[i].numOfOwnerChange %></td>
+​    </tr>
+    <% } %>
+        
+    </tbody>
+</table>
+
+</body>
+
+
+</html>
