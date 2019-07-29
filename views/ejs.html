@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+        <h1>EJS Text</h1>
+        <h2>CarList 로그인</h2> 
+        <p><%= id %> 님 반갑습니다.</p>
+        <p>당신의 id는 <%= password %> 입니다.</p>
+
+<table class="table table-striped-login" id="login">
+    <thead>
+        <tr>
+        <th class="th-sm">No</th>
+        <th>name</th>
+        <th>userid</th>
+        </tr>
+    </thead>
+    <tbody id="login">
+
+    <% for(let i=0; i<login.length; i++) { %>
+        <tr>
+            <td><%= i %></td>
+            <td><%= login[i].name %></td>
+            <td><%= login[i].userid %></td>
+        </tr>
+    <% } %>
+
+        </tbody>
+</table>
+
+</body>
+</html>

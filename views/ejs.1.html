@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- =이라고 붙는다. name은 홍길동, name에 출력된다. -->
+    <!-- id는 userid에 출력된다. -->
+    <h1>EJS Text</h1>
+    <p><% name %> 님 반갑습니다.</p>
+    <p>당신의 id는 <% userid %> 입니다.</p>
+
+    <!-- <% var list = carlist[0];
+    %>
+
+    <h1><%= name %></h1>
+
+    <% if(userid == 'aaaa') { %>
+        <h2><%= name %> 님이 입장하셨습니다.</h2>
+        <% } esle { %>
+        <h2>누구세요</h2>
+        <% } %>
+    <% for(let i=0; i<carlist.length; i++) { %>
+        <p><%= carlist[i].owner %></p>
+        <p><%= carlist[i].carNumber %></p>
+        <p><%= carlist[i].model %></p>    
+    <% } %> -->
+    
+
+    <!-- <ul></ul> -->
+        <!-- =이 없는 <%는 자바 스크립트가 올 수 있다. -->
+        <!-- i<loop; i++ -->
+            <!-- i=0; i<loop; i++로 만들고 LOOP <%= i%> -->
+    <!-- <% for (let i=0; i<loop; i++) { %>
+        <li>LOOP <%= i %> </li>
+    <% } %> -->
+    <!-- </ul> -->
+
+        <!-- 여기서부터는 자바 스크립트로 구현한다. <%로 했을 때 -->
+        <!-- <% for (var i=0; i<10; i++) { %> // 2
+            console.log()); // 3
+            var a = 10; // 1
+        }
+        <% } %> -->
+
+        <!-- <%
+            var a = 10;
+            for (var i=0; i<10, i++) {
+                console.log());
+            } 
+        %> -->
+
+        <!-- <table class="table table-striped" id="loop">
+                <thead>
+                    <tr>
+        
+                    <th class="th-sm">Loop</th>
+        
+                    </tr>
+                </thead>
+            
+            <tbody id="loop">
+            <ul>
+            <% for(let i=0; i<loop; i++) { %>
+                <li>LOOP <%= i %> </li>
+            <% } %>
+            </ul>
+                
+            </tbody>
+        </table> -->
+
+<table class="table table-striped-login" id="login">
+    <thead>
+        <tr>
+        <th class="th-sm">No</th>
+        <th>name</th>
+        <th>userid</th>
+        </tr>
+    </thead>
+    <tbody id="login">
+
+    <% for(let i=0; i<login.length; i++) { %>
+        <tr>
+            <td><%= i %></td>
+            <td><%= login[i].name %></td>
+            <td><%= login[i].userid %></td>
+        </tr>
+    <% } %>
+
+        </tbody>
+</table>
+
+    <!-- views 폴더 안에 ejs 파일을 만들어야 한다. 폴더 안에 ejs 파일을 찾는 것이다. -->
+     <!-- ,를 입력하고 ejs 객체를 만들어줄 수 있다. 이름이나 name 등 변수를 만들 수 있다. -->
+
+</body>
+</html>

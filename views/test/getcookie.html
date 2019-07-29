@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <% include ../inc/header.ejs %>
+    <!-- // ..을 입력한다. inc/header.ejs에 포함시켜준다.
+    // 자바스크립트나 url을 계속 붙여서 쓰지 않고 header 부분의 소스파일을 요청할 때 사용한다. -->
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Cookie test </h1>
+        </div>
+        <div>
+            <!-- 쿠키 내용 : <%= cookie %>
+            이름: < % = cookie.user.name % >
+            아이디: < % = cookie.user.id % >
+
+            <%= myname %>
+            <%= myid %> -->
+            <!-- // user name의 set.cookies라는 객체에 저장이 되어진다.
+            // 내용을 잘 알아야 한다. 이해를 잘 해야 한다.
+            // 의미를 잘 알아야 한다. -->
+        </div>
+    </div>
+    <% include ../inc/footer.ejs %>
+
+    <!-- // ../inc/footer.ejs를 포함해준다. -->
+</body>
+</html>

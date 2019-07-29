@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <% include ../inc/header.ejs %>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>getsession 테스트</h1>
+            <!-- <p> < % = user.userid % > 님 안녕하세요. </p>
+            <br>
+            <p> 아이디는 < % = user.name % > 입니다. </p> -->
+            <p> 회원정보 : <%=user.userid %> 님 반갑습니다. 즐거운 하루 보내세요. </p>
+            <p> 아이디 : <%= user.userid %> 로그인을 했습니다. </p>
+            <p> 이름 : <%= user.name %> 님 안녕하세요.  </p>
+        </div>
+    </div>
+    <% include ../inc/footer.ejs %>
+</body>
+</html>
